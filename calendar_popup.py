@@ -6,6 +6,7 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 import wx
 import sys
+import shutil
 
 SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']
 
@@ -17,8 +18,22 @@ else:
 
 CREDENTIALS_PATH = os.path.join(script_dir, 'credentials.json')
 LOGFILE = os.path.join(script_dir, 'calendar_popup.log')
+LOGFILE_BAK = os.path.join(script_dir, 'calendar_popup.log.bak')
 
 def log_message(msg):
+    # Delete or overwrite the log file if it's a new day, but keep one backup
+    cleared_today = False
+    if os.path.exists(LOGFILE):
+        last_mod = datetime.datetime.fromtimestamp(os.path.getmtime(LOGFILE))
+        today = datetime.datetime.now().date()
+        if last_mod.date() != today:
+            # Make a backup copy (overwrite previous backup)
+            shutil.copy2(LOGFILE, LOGFILE_BAK)
+            open(LOGFILE, 'w').close()  # Truncate the file
+            cleared_today = True
+    if cleared_today:
+        with open(LOGFILE, 'a') as f:
+            f.write(f"{datetime.datetime.now().isoformat()} Log cleared for new day, backup saved as calendar_popup.log.bak\n")
     with open(LOGFILE, 'a') as f:
         f.write(f"{datetime.datetime.now().isoformat()} {msg}\n")
 
