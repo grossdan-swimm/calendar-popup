@@ -104,6 +104,11 @@ This program checks your Google Calendar for upcoming events and pops up a remin
 
 - The program writes logs to `calendar_popup.log` in the same folder as the executable.
 
+- Automatic Log Rotation:
+
+At the start of each new day, the log file is cleared and a backup of the previous day's log is saved as calendar_popup.log.bak. Only one backup copy is kept at a time.
+
+When the log is rotated, a message is written to the new log file indicating the log was cleared and a backup was made.
 ---
 
 ## **Notes**
@@ -115,3 +120,5 @@ This program checks your Google Calendar for upcoming events and pops up a remin
 ---
 
 **Enjoy your automatic calendar reminders!**
+
+2024-06-07T00:00:01 Log cleared for new day, backup saved as calendar_popup.log.bak
