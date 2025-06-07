@@ -1,6 +1,6 @@
 # Calendar Popup Reminder
 
-This program checks your Google Calendar for upcoming events and pops up a reminder window on macOS. It is designed to be run automatically using cron.
+This program checks your Google Calendar for upcoming events in the next 10 minutes, and pops up a reminder window on macOS. It is designed to be run automatically every few minutes (5 by default) using cron.
 
 ---
 
