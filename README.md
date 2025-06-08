@@ -108,17 +108,14 @@ Todo:
 
 At the start of each new day, the log file is cleared and a backup of the previous day's log is saved as calendar_popup.log.bak. Only one backup copy is kept at a time.
 
-When the log is rotated, a message is written to the new log file indicating the log was cleared and a backup was made.
 ---
 
 ## **Notes**
 
 - Make sure `credentials.json` and `token.pickle` are in the same folder as the executable.
 - The first run will require Google authentication in your browser.
-- The program will only show a popup if an event is within the next 10 minutes, and then every time cron runs the pop up reminder.
+- The program will only show a popup if an event is within the next 10 minutes (when cron runs and detects within 10 minutes range), and then every time cron runs the pop up reminder.
 
 ---
 
 **Enjoy your automatic calendar reminders!**
-
-2024-06-07T00:00:01 Log cleared for new day, backup saved as calendar_popup.log.bak
