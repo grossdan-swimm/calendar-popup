@@ -29,6 +29,8 @@ Todo:
    - Enable the Google Calendar API and download your `credentials.json`.
    - Place `credentials.json` in the same folder as the program.
 
+3. Edit in manage_cron.py the path where you will place the executable (see below)
+   
 4. **Create the Executable**
 
    ```sh
